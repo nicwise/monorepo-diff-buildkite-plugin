@@ -20,7 +20,7 @@ steps:
   - label: "Triggering pipelines"
     plugins:
       - chronotc/monorepo-diff#v2.2.0:
-          diff: "git diff --name-only HEAD~1"
+          diff: "git diff --name-only main..."
           watch:
             - path: "bar-service/"
               config:
@@ -89,6 +89,10 @@ tests/trigger.bats
 ```
 
 Default: `git diff --name-only HEAD~1`
+
+Useful samples:
+* `git diff --name-only HEAD~1` - the files which have changed in this commit only
+* `git diff --name-only main...` - all files changed since the branch from `main` (useful if you only ever branch from `main`)
 
 #### Examples:
 
